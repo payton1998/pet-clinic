@@ -7,8 +7,6 @@ import guru.springframework.petclinic.model.Owner;
 import guru.springframework.petclinic.model.Vet;
 import guru.springframework.petclinic.services.OwnerService;
 import guru.springframework.petclinic.services.VetService;
-import guru.springframework.petclinic.services.map.OwnerServiceMap;
-import guru.springframework.petclinic.services.map.VetServiceMap;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -16,6 +14,7 @@ public class DataLoader implements CommandLineRunner {
 	private final OwnerService ownerService;
 	private final VetService vetService;
 
+	
 	public DataLoader(OwnerService ownerService, VetService vetService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
@@ -57,6 +56,7 @@ public class DataLoader implements CommandLineRunner {
 		vetService.save(vet1);
 		
 		System.out.println("Loaded Vets...");
+		
 		
 	}
 	
