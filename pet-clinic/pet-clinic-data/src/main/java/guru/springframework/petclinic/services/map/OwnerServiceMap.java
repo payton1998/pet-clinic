@@ -8,15 +8,8 @@ import guru.springframework.petclinic.model.Owner;
 import guru.springframework.petclinic.services.OwnerService;
 
 @Service
-public class OwnerServiceMap extends AbstractMapService<Owner,Long > implements OwnerService {
+public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements OwnerService {
 
-	
-
-	@Override
-	public Owner findByLastName(String lastName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Set<Owner> findAll() {
@@ -46,6 +39,12 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long > implements 
 	public void delete(Owner object) {
 		// TODO Auto-generated method stub
 		super.delete(object);
+	}
+	
+	@Override
+	public Owner findByLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

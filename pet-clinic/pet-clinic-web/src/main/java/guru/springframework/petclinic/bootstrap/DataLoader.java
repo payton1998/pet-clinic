@@ -8,6 +8,7 @@ import guru.springframework.petclinic.model.Vet;
 import guru.springframework.petclinic.services.OwnerService;
 import guru.springframework.petclinic.services.VetService;
 
+
 @Component
 public class DataLoader implements CommandLineRunner {
 	
