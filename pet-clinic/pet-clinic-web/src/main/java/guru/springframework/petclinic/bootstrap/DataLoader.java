@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import guru.springframework.petclinic.model.Owner;
 import guru.springframework.petclinic.model.Pet;
 import guru.springframework.petclinic.model.PetType;
+import guru.springframework.petclinic.model.Specialty;
 import guru.springframework.petclinic.model.Vet;
 import guru.springframework.petclinic.services.OwnerService;
 import guru.springframework.petclinic.services.PetTypeService;
@@ -40,6 +41,8 @@ public class DataLoader implements CommandLineRunner {
 		PetType cat = new PetType();
 		dog.setName("Cat");
 		PetType savedCatPetType = petTypeService.save(cat);
+		
+		Specialty radiology = new Specialty();
 		
 		
 		Owner owner1 = new Owner();
