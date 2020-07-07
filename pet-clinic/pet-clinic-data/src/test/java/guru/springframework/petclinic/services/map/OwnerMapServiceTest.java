@@ -1,9 +1,9 @@
 package guru.springframework.petclinic.services.map;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Set;
 
@@ -13,10 +13,9 @@ import org.junit.jupiter.api.Test;
 import guru.springframework.petclinic.model.Owner;
 
 class OwnerMapServiceTest {
+OwnerMapService ownerMapService;
 	
-	OwnerMapService ownerMapService;
-	
-	final long ownerId = 1L;
+	final Long ownerId = 1L;
 	final String lastName = "Smith";
 
 	@BeforeEach
@@ -47,7 +46,7 @@ class OwnerMapServiceTest {
 
 	@Test
 	void saveExistingId() {
-		long id = 2L;
+		Long id = 2L;
 		Owner owner2 = Owner.builder().id(id).build();
 		
 		Owner savedOwner = ownerMapService.save(owner2);
@@ -93,6 +92,5 @@ class OwnerMapServiceTest {
 		
 		assertNull(smith);
 	}
-		
 
 }
