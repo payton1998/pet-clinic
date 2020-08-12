@@ -34,7 +34,7 @@ class OwnerControllerTest {
 	
 	Set<Owner> owners;
 	
-	MockMvc mockMVC;
+	MockMvc mockMvc;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -42,7 +42,7 @@ class OwnerControllerTest {
 		owners.add(Owner.builder().id(1L).build());
 		owners.add(Owner.builder().id(2L).build());
 		
-		mockMVC = MockMvcBuilders
+		mockMvc = MockMvcBuilders
 				.standaloneSetup(controller).build();
 	}
 
@@ -50,7 +50,7 @@ class OwnerControllerTest {
 	void testListOwners() throws Exception{
 		when(ownerService.findAll()).thenReturn(owners);
 		
-		mockMVC.perform(get("/owners"))
+		mockMvc.perform(get("/owners"))
 			.andExpect(status().isOk())
 			.andExpect(view().name("owners/index"))
 			.andExpect(model().attribute("owners", hasSize(2)));
@@ -60,7 +60,7 @@ class OwnerControllerTest {
 	void testListOwnersByIndex() throws Exception{
 		when(ownerService.findAll()).thenReturn(owners);
 		
-		mockMVC.perform(get("/owners"))
+		mockMvc.perform(get("/owners"))
 			.andExpect(status().isOk())
 			.andExpect(view().name("owners/index"))
 			.andExpect(model().attribute("owners", hasSize(2)));
@@ -68,11 +68,21 @@ class OwnerControllerTest {
 
 	@Test
 	void testFindOwners() throws Exception{
-		mockMVC.perform(get("/owners/find"))
+		mockMvc.perform(get("/owners/find"))
 		.andExpect(status().isOk())
 		.andExpect(view().name("notimplemented"));
 		
 		verifyZeroInteractions(ownerService);
 	}
+	
+	@Test
+    void displayOwner() throws Exception {
+        when(ownerService.findById(anyLong())).thenReturn(Owner.builder().id(1l).build());
+
+        mockMvc.perform(get("/owners/123"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownerDetails"))
+                .andExpect(model().attribute("owner", hasProperty("id", is(1l))));
+    }
 
 }
