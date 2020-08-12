@@ -1,6 +1,7 @@
 package guru.springframework.petclinic.services.map.springdatajpa;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.context.annotation.Profile;
@@ -66,6 +67,12 @@ public class OwnerSDJpaService implements OwnerService{
 	public Owner findByLastName(String lastName) {
 		// TODO Auto-generated method stub
 		return ownerRepository.findByLastName(lastName);
+	}
+
+	@Override
+	public List<Owner> findAllByLastNameLike(String lastName) {
+		// TODO Auto-generated method stub
+		return ownerRepository.findAllByLastNameLike(lastName);
 	}
 
 }
